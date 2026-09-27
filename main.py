@@ -1,16 +1,23 @@
-# This is a sample Python script.
+"""Demonstrate collaboration among the parking ticket simulator classes."""
 
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
+from parked_car import ParkedCar
+from parking_meter import ParkingMeter
+from police_officer import PoliceOfficer
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+def main():
+    """Create sample objects and demonstrate a parking inspection."""
+    car = ParkedCar("Toyota", "Camry", "Blue", "ABC123", 121)
+    meter = ParkingMeter(60)
+    officer = PoliceOfficer("John Smith", "5678")
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    ticket = officer.inspect_car(car, meter)
+
+    if ticket is None:
+        print("No parking violation. No ticket was issued.")
+    else:
+        print(ticket)
+
+
+if __name__ == "__main__":
+    main()
